@@ -1,0 +1,16 @@
+﻿<Application x:Class="Ferrari.WindowsStore.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Configurations="using:Ferrari.Configurations">
+    <Application.Resources>
+    	<ResourceDictionary>
+    		<ResourceDictionary.MergedDictionaries>
+    			<ResourceDictionary Source="Skins/MainSkin.xaml"/>
+    			<ResourceDictionary Source="Skins/ApplicationColors.xaml"/>
+                <ResourceDictionary Source="Skins/CustomizedControls.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+    		<Configurations:ViewModelFactory x:Key="Factory" />
+            <Configurations:Constants x:Key="Constants" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

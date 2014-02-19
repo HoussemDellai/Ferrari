@@ -1,0 +1,106 @@
+﻿<Application x:Class="Ferrari.WPhone8.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+             xmlns:Configurations="clr-namespace:Ferrari.Configurations"
+             xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:Ui="clr-namespace:Windows.UI;assembly=System.Runtime.WindowsRuntime"
+             xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
+
+    <!--Application Resources-->
+    <Application.Resources>
+
+        <Configurations:ViewModelFactory x:Key="Factory" />
+
+        <Configurations:Constants x:Key="Constants" />
+
+        <SolidColorBrush x:Key="MainRedColorBrush"
+                         Color="DarkRed" />
+
+        <Color x:Key="MainRedColor">#FF8B0000</Color>
+
+        <SolidColorBrush x:Key="SecondColorBrush"
+                         Color="Teal" />
+
+        <Color x:Key="SecondColor">#FF008080</Color>
+
+        <toolkit:RelativeTimeConverter x:Key="RelativeTimeConverter" />
+
+        <DataTemplate x:Key="MainPivotItem">
+            <phone:PivotItem>
+                <StackPanel Orientation="Vertical"
+                            Width="450">
+                    <TextBlock Text="{Binding Title}"
+                               FontSize="34"
+                               TextWrapping="Wrap" />
+                    <Image Source="{Binding ImageUrl}"
+                           Height="300" />
+                    <RichTextBox>
+                        <Paragraph>
+                            <InlineUIContainer>
+                                <TextBlock Text="{Binding TextNews}"
+                                           TextWrapping="Wrap" />
+                            </InlineUIContainer>
+                        </Paragraph>
+                    </RichTextBox>
+                </StackPanel>
+            </phone:PivotItem>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ItemDataTemplate">
+            <Grid Height="100"
+                  Margin="0,0,0,12">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Tap">
+                        <i:InvokeCommandAction Command="{Binding MainPage.NavigateToDetailsPageCommand, Mode=OneWay, Source={StaticResource Factory}}"
+                                               CommandParameter="{Binding Mode=OneWay}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="5*" />
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding ImageUrl}"
+                       Stretch="UniformToFill"
+                       Grid.Column="0" />
+                <StackPanel Orientation="Vertical"
+                            Grid.Column="1">
+                    <TextBlock Text="{Binding Title}"
+                               TextWrapping="Wrap"
+                               Style="{StaticResource PhoneTextLargeStyle}"
+                               FontSize="20"
+                               MaxHeight="85"
+                               TextTrimming="WordEllipsis" />
+                    <TextBlock Text="{Binding PublishDate, Converter={StaticResource RelativeTimeConverter}}"
+                               TextWrapping="Wrap"
+                               Style="{StaticResource PhoneTextLargeStyle}"
+                               FontSize="11"
+                               Opacity="0.7"
+                               TextTrimming="WordEllipsis" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+        <sys:Double x:Key="PanoramaItemHeaderFontSize">66</sys:Double>
+
+        <Style x:Key="PanoramaItemHeaderTextStyle"
+               TargetType="TextBlock">
+            <Setter Property="FontFamily"
+                    Value="{StaticResource PhoneFontFamilySemiLight}" />
+            <Setter Property="FontSize"
+                    Value="{StaticResource PanoramaItemHeaderFontSize}" />
+            <Setter Property="CharacterSpacing"
+                    Value="-35" />
+        </Style>
+
+        <!--<local:LocalizedStrings xmlns:local="clr-namespace:Ferrari.WPhone8" x:Key="LocalizedStrings"/>-->
+    </Application.Resources>
+
+    <Application.ApplicationLifetimeObjects>
+        <!--Required object that handles lifetime events for the application-->
+        <shell:PhoneApplicationService Launching="Application_Launching" />
+    </Application.ApplicationLifetimeObjects>
+
+</Application>

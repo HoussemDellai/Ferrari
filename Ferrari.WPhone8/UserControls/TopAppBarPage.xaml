@@ -1,0 +1,291 @@
+﻿<UserControl x:Class="Ferrari.WPhone8.UserControls.TopAppBarPage"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+                            mc:Ignorable="d"
+                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource PhoneFontSizeNormal}"
+                            Foreground="{StaticResource PhoneForegroundBrush}"
+                            
+                            shell:SystemTray.IsVisible="False"
+                            DataContext="{Binding MainPage, Mode=OneWay, Source={StaticResource Factory}}">
+
+    <!--LayoutRoot contains the root grid where all other page content is placed-->
+    <Grid>
+        <Grid.Resources>
+            <SolidColorBrush x:Key="MenuIconColor"
+                             Color="White" />
+            <Style x:Key="MenuGridStyle"
+                   TargetType="Grid">
+                <Setter Property="Height"
+                        Value="62" />
+                <Setter Property="Background"
+                        Value="{StaticResource SecondColorBrush}" />
+                <Setter Property="Width"
+                        Value="400" />
+                <!--<Setter Property="Background"
+                                Value="{StaticResource MainRedColorBrush}" />-->
+                <Setter Property="Margin"
+                        Value="0,0,0,12" />
+            </Style>
+            <Style x:Key="MenuTextBlockStyle"
+                   TargetType="TextBlock">
+                <Setter Property="FontSize"
+                        Value="28" />
+                <Setter Property="Margin"
+                        Value="100,12,0,0" />
+            </Style>
+            <Style x:Key="ViewboxStyle"
+                   TargetType="Viewbox">
+                <Setter Property="Margin"
+                        Value="24,12,8,8" />
+                <Setter Property="Width"
+                        Value="40" />
+                <Setter Property="Height"
+                        Value="40" />
+                <Setter Property="VerticalAlignment"
+                        Value="Top" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Left" />
+            </Style>
+
+        </Grid.Resources>
+        <ListBox Margin="12,24,0,0" VerticalAlignment="Top" HorizontalAlignment="Center">
+
+            <Grid Style="{StaticResource MenuGridStyle}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Tap">
+                        <i:InvokeCommandAction Command="{Binding NavigateToCarsPageCommand, Mode=OneWay}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+                <Viewbox Width="45"
+                         Height="35"
+                         Margin="24,10"
+                         Style="{StaticResource ViewboxStyle}">
+                    <Grid>
+                        <Path Fill="{StaticResource MenuIconColor}"
+                              Data="M15.727,43.753" />
+                        <Path Fill="{StaticResource MenuIconColor}"
+                              Data="M90.925,28.696L82.728,7.529C81.195,3.477,77.845,0.029,71.505,0h-11.56H40.188H28.427
+	c-6.311,0.029-9.661,3.477-11.222,7.529L9.006,28.696C5.751,29.116-0.01,32.941,0,40.187v26.951h7.999v8.603
+	c-0.02,10.606,14.989,10.48,14.985,0v-8.603H50h26.948v8.603c0.033,10.48,15.042,10.606,15.052,0v-8.603h8V40.187
+	C99.975,32.941,94.21,29.116,90.925,28.696z M15.727,50.874c-3.834,0.011-6.938-3.187-6.922-7.12
+	c-0.016-3.96,3.088-7.161,6.922-7.128c3.822-0.033,6.926,3.168,6.921,7.128C22.653,47.687,19.548,50.884,15.727,50.874z M50,28.497
+	h-0.067H17.541l6.182-16.668c0.746-2.366,1.904-4.059,4.639-4.1h21.571H50H71.64c2.693,0.041,3.854,1.733,4.636,4.1l6.183,16.668H50
+	z M84.274,50.874c-3.861,0.011-6.967-3.187-6.988-7.12c0.021-3.96,3.127-7.161,6.988-7.128c3.795-0.033,6.898,3.168,6.922,7.128
+	C91.172,47.687,88.069,50.884,84.274,50.874z" />
+                        <Path Fill="{StaticResource MenuIconColor}"
+                              Data="M84.274,43.753" />
+                    </Grid>
+                </Viewbox>
+                <TextBlock Text="{Binding SectionNames[1], Source={StaticResource Constants}}"
+                           Style="{StaticResource MenuTextBlockStyle}" />
+            </Grid>
+            <Grid Style="{StaticResource MenuGridStyle}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Tap">
+                        <i:InvokeCommandAction Command="{Binding NavigateToVideosCollectionPageCommand, Mode=OneWay}"
+                                               CommandParameter="{Binding YoutubeVideosCollection[0]}" />
+                        <i:InvokeCommandAction Command="{Binding NavigateToVideosCollectionPageCommand, Mode=OneWay}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+                <Viewbox Width="50"
+                         Height="40"
+                         Margin="20,4"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Left">
+                    <Grid>
+                        <Path Fill="{StaticResource MenuIconColor}"
+                              Data="M82.112,20.508H17.888c-4.418,0-8,3.582-8,8v42.984c0,4.418,3.582,8,8,8h64.225c4.418,0,8-3.582,8-8V28.508   C90.112,24.089,86.53,20.508,82.112,20.508z M82.112,71.492H17.888V28.508h64.225V71.492z" />
+                        <Path Fill="{StaticResource MenuIconColor}"
+                              Data="M37.627,66.596c0.619,0.357,1.309,0.536,2,0.536c0.69,0,1.381-0.179,2-0.536l22.746-13.132c1.238-0.714,2-2.035,2-3.464   c0-1.429-0.762-2.75-2-3.464L41.627,33.404c-1.237-0.715-2.763-0.715-4,0c-1.238,0.714-2,2.035-2,3.464v26.264   C35.627,64.561,36.389,65.882,37.627,66.596z M43.627,43.796L54.373,50l-10.746,6.204V43.796z" />
+                    </Grid>
+                </Viewbox>
+                <!--<Image Source="ms-appx:///Assets/Images/video.png"
+                               Width="60"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" />-->
+                <TextBlock Text="Videos"
+                           Style="{StaticResource MenuTextBlockStyle}" />
+            </Grid>
+            <Grid Style="{StaticResource MenuGridStyle}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Tap">
+                        <i:InvokeCommandAction Command="{Binding NavigateToAlbumPhotosPageCommand, Mode=OneWay}" />
+                        <i:InvokeCommandAction Command="{Binding NavigateToAlbumPhotosPageCommand, Mode=OneWay}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+                <Viewbox Width="40"
+                         Height="40"
+                         Margin="24,10"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Left">
+                    <Grid>
+                        <Path Fill="{StaticResource MenuIconColor}"
+                              Data="M52.921,51.022c0,3.057-2.47,5.531-5.523,5.531c-3.055,0-5.528-2.475-5.528-5.531   c0-3.05,2.473-5.521,5.528-5.521C50.451,45.502,52.921,47.972,52.921,51.022z" />
+                        <Path Fill="{StaticResource MenuIconColor}"
+                              Data="M34.766,73.678h47.865l0,0l0,0V59.164L76.3,47.675l-8.603,18.581l-5.071-7.806   c0,0-7.098,6.633-14.572,11.846l-5.688-2.617L34.766,73.678z" />
+                        <Path Fill="{StaticResource MenuIconColor}"
+                              Data="M84.362,29.596v-5.738v-5.741v-5.74h-68.88H4v11.481v28.703v5.738v5.737h17.221V87h74.624V29.596H84.362z    M21.221,55.179h-8.358V21.239H75.5v8.357H21.221V55.179z M86.98,78.137H30.083V38.459H86.98V78.137z" />
+                    </Grid>
+                </Viewbox>
+                <TextBlock Text="Photos"
+                           Style="{StaticResource MenuTextBlockStyle}" />
+            </Grid>
+            <Grid Style="{StaticResource MenuGridStyle}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Tap">
+                        <i:InvokeCommandAction Command="{Binding NavigateToRacingPageCommand, Mode=OneWay}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+                <Viewbox Width="40"
+                         Height="40"
+                         Margin="26,14"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Left">
+                    <Grid>
+                        <Path Fill="{StaticResource MenuIconColor}"
+                              Data="M29.489,26.943c-2.138-0.217-3.824-0.382-5.276-0.113c-2.686,0.513-4.455,3.112-3.946,5.797
+		c1.243,6.544,2.169,8.292,10.013,13.628c1.095,0.626,6.623,1.391,11.79,1.616c0.096,0.009,3.298,0.113,8.062,0.209L40.84,26.83
+		C36.19,27.612,32.483,27.247,29.489,26.943z" />
+                        <Path Fill="{StaticResource MenuIconColor}"
+                              Data="M58.311,21.606c3.359,5.519,6.258,11.369,8.622,17.461c1.407,3.59,2.329,6.58,2.938,9.074
+		c1.529-0.025,3.033-0.069,4.511-0.112c-0.704-3.146-1.816-6.676-3.329-10.561c-2.355-6.032-5.197-11.83-8.487-17.331
+		C61.14,20.633,59.718,21.128,58.311,21.606z" />
+                        <Path Fill="{StaticResource MenuIconColor}"
+                              Data="M84.533,34.4c0,0-1.383,0.591-2.391-2.72c-0.999-3.32-3.164-10.76-3.164-10.76c-0.277-1.513,2.034-3.112,3.842-4.659
+		c-0.608-1.052-1.182-2.017-1.651-2.816c-3.085,1.139-8.544,3.138-14.515,5.258c2.902,4.815,5.893,10.613,8.509,17.314
+		c1.912,4.901,2.99,8.787,3.563,11.838c4.233-0.209,7.971-0.548,10.596-1.043c4.311-0.817,5.476-2.147,5.771-2.687
+		c0.296-0.513,0.174-1.025,0.122-1.199l-0.069-0.13l0.026,0.025c-0.009-0.043-0.514-1.277-1.278-3.12
+		C89.835,36.138,84.533,34.4,84.533,34.4z" />
+                        <Path Fill="{StaticResource MenuIconColor}"
+                              Data="M90.556,53.313c-2.868,0.539-6.849,0.896-11.316,1.13c-0.017,0-0.017,0-0.025,0c-1.573,0.087-3.199,0.147-4.859,0.2
+		c-0.008,0-0.017,0-0.017,0c-3.895,0.121-7.962,0.165-11.86,0.174c-0.013,0-0.025,0-0.039,0c-1.664,0-3.294-0.009-4.862-0.018
+		c-0.005,0-0.005,0-0.009,0c-8.444-0.069-15.132-0.296-15.763-0.312c-3.62-0.166-12.299-0.757-15.245-2.765
+		c-8.874-6.04-11.147-9.213-12.785-17.861c-1.191-6.267,2.942-12.333,9.208-13.524c2.395-0.452,4.715-0.217,7.175,0.035
+		c2.316,0.235,4.894,0.478,7.936,0.165c0.339-0.035,0.683-0.069,1.035-0.122c0.399-0.061,0.799-0.122,1.217-0.2
+		c0.174-0.026,0.36-0.07,0.561-0.113c0.035-0.008,0.065-0.017,0.1-0.026c0.196-0.035,0.404-0.087,0.622-0.139
+		c0.039-0.017,0.083-0.026,0.126-0.035c0.226-0.052,0.461-0.122,0.708-0.183c0.03-0.009,0.061-0.017,0.096-0.026
+		c0.239-0.07,0.491-0.13,0.748-0.208c0.035-0.009,0.074-0.018,0.108-0.026c0.27-0.078,0.556-0.156,0.843-0.243
+		c0.061-0.018,0.122-0.035,0.183-0.052c0.291-0.087,0.586-0.174,0.895-0.27c0.061-0.017,0.126-0.035,0.191-0.052
+		c0.304-0.095,0.613-0.191,0.93-0.287c0.026-0.009,0.052-0.018,0.079-0.026c0.334-0.104,0.678-0.208,1.025-0.321
+		c0.083-0.026,0.161-0.052,0.243-0.078c0.335-0.104,0.674-0.209,1.021-0.322c0.096-0.035,0.191-0.061,0.287-0.096
+		c0.348-0.113,0.7-0.226,1.056-0.339c0.091-0.035,0.191-0.061,0.283-0.096c0.295-0.096,0.591-0.191,0.891-0.295
+		c0.121-0.035,0.238-0.069,0.356-0.113c0.348-0.113,0.699-0.235,1.051-0.348c0.148-0.052,0.3-0.104,0.448-0.157
+		c0.339-0.113,0.682-0.226,1.025-0.339c0.17-0.061,0.339-0.122,0.513-0.174c0.248-0.087,0.495-0.174,0.743-0.252
+		c0.266-0.096,0.526-0.183,0.795-0.278c0.222-0.069,0.448-0.147,0.674-0.226c0.227-0.078,0.452-0.156,0.683-0.234
+		c0.3-0.104,0.6-0.208,0.899-0.313c0.257-0.087,0.513-0.174,0.77-0.27c0.126-0.035,0.247-0.078,0.365-0.122
+		c0.46-0.157,0.917-0.322,1.377-0.478c0.083-0.035,0.165-0.061,0.248-0.087c0.564-0.2,1.134-0.4,1.699-0.6
+		c5.91-2.086,11.838-4.242,16.444-5.945c-1.217-1.191-2.521-2.434-3.807-3.642c-2.251-2.599-4.798-4.928-7.597-6.919
+		c-0.018-0.017-0.035-0.035-0.035-0.035v0.009c-9.369-6.692-21.351-9.7-33.558-7.388C10.715-6.425-4.861,16.452-0.358,40.172
+		c0.574,3.024,1.456,5.919,2.59,8.656l-0.004,0.009l0.056,0.113c0.548,1.304,1.152,2.573,1.817,3.807l7.744,16.245
+		c0,0,6.549,2.556,17.905,4.798c3.833,1.182,7.861,1.852,11.99,1.921c13.481,1.686,30.816,2.286,50.511-0.669
+		c0,0,7.779-10.952,6.467-25.146C96.814,51.497,94.085,52.635,90.556,53.313z" />
+                    </Grid>
+                </Viewbox>
+                <TextBlock Text="Racing"
+                           Style="{StaticResource MenuTextBlockStyle}" />
+            </Grid>
+            <Grid Style="{StaticResource MenuGridStyle}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Tap">
+                        <i:InvokeCommandAction Command="{Binding NavigateToFormula1PageCommand, Mode=OneWay}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+                <Viewbox Width="40"
+                         Height="40"
+                         Margin="24,14"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Left">
+                    <Grid>
+                        <Path Fill="{StaticResource MenuIconColor}"
+                              Data="M5.468,97.271c0,1.506-1.223,2.733-2.734,2.733l0,0C1.223,100.004,0,98.776,0,97.271V2.162c0-1.51,1.223-2.734,2.734-2.734  l0,0c1.511,0,2.734,1.224,2.734,2.734V97.271z" />
+                        <Path Fill="{StaticResource MenuIconColor}"
+                              Data="M78.327,53.34H1.408V1.529h76.919V53.34z M4.06,50.691h71.619V4.18H4.06V50.691z" />
+                        <Grid Width="20"
+                              Height="16"
+                              Margin="0,3,0,10"
+                              VerticalAlignment="Top"
+                              Background="{StaticResource MenuIconColor}" />
+                        <Grid Width="20"
+                              Height="16"
+                              Margin="0,35,0,10"
+                              VerticalAlignment="Top"
+                              Background="{StaticResource MenuIconColor}" />
+                        <Grid Width="20"
+                              Height="18"
+                              Margin="8,18,0,10"
+                              VerticalAlignment="Top"
+                              HorizontalAlignment="Left"
+                              Background="{StaticResource MenuIconColor}" />
+                        <Grid Width="19"
+                              Height="18"
+                              Margin="50,18,0,10"
+                              VerticalAlignment="Top"
+                              HorizontalAlignment="Left"
+                              Background="{StaticResource MenuIconColor}" />
+                    </Grid>
+                </Viewbox>
+                <TextBlock Text="{Binding SectionNames[3], Source={StaticResource Constants}}"
+                           Style="{StaticResource MenuTextBlockStyle}" />
+            </Grid>
+            <Grid Style="{StaticResource MenuGridStyle}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Tap">
+                        <i:InvokeCommandAction Command="{Binding NavigateToNewsPageCommand, Mode=OneWay}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+                <Viewbox Width="35"
+                         Height="35"
+                         Margin="30,12"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Left">
+                    <Grid>
+
+                        <Path Fill="{StaticResource MenuIconColor}"
+                              Data="M86.951,3.309v65.842c0,6.129-5.345,11.604-10.952,11.604H1.159c-9.257,0-14.208-4.825-14.208-16.559V16.088h13.82V3.309
+		H86.951L86.951,3.309z M0.771,23.127h-6.782v41.07c0,5.998,1.432,8.866,3.257,8.866c2.219,0,3.524-2.868,3.524-8.866V23.127z
+		 M79.912,10.35H7.81v53.847c0,4.173-0.782,7.17-1.957,9.517h70.146c2.345,0,3.913-2.737,3.913-4.562V10.35z M35.581,35.122H19.023
+		v-2.347h16.558V35.122z M35.581,42.814H19.023v-2.347h16.558V42.814z M35.581,50.246H19.023v-2.347h16.558V50.246z M35.581,57.418
+		H19.023v-2.347h16.558V57.418z M35.581,64.848H19.023v-2.345h16.558V64.848z M21.499,20.651h43.418v4.563H21.499V20.651z
+		 M42.101,32.775h27.767v26.468H42.101V32.775z" />
+                    </Grid>
+                </Viewbox>
+                <TextBlock Text="News"
+                           Style="{StaticResource MenuTextBlockStyle}" />
+            </Grid>
+            <Grid Style="{StaticResource MenuGridStyle}">
+            	<i:Interaction.Triggers>
+            		<i:EventTrigger EventName="Tap">
+            			<i:InvokeCommandAction Command="{Binding NavigateToMainPageCommand, Mode=OneWay}"/>
+            		</i:EventTrigger>
+            	</i:Interaction.Triggers>
+
+                <Viewbox Width="42"
+                         Height="42"
+                         Margin="22,10"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Left">
+                    <Grid>
+                        <Path Fill="{StaticResource MenuIconColor}"
+                              Data="M23.4375,87.18107 L37.3046875,87.18107 L37.3046875,59.6193416 L62.6953125,59.6193416 L62.6953125,87.18107 L76.171875,87.18107 L76.171875,45.6215966 L49.9591371,19.4088587 L23.4375,45.9304959 Z M83.984375,53.4340966 L83.984375,87.18107 L83.984375,95 L76.171875,95 L23.4375,95 L15.625,95 L15.625,87.18107 L15.625,53.7429959 L9.69459644,59.6733994 L0.01916413,49.9979671 L49.8757165,0.141414776 L49.9668827,0.232581044 L50.0503034,0.149160378 L67.3828125,17.4816695 L67.3828125,7.23251029 L66.40625,7.23251029 L66.40625,3.32304527 L81.0546875,3.32304527 L81.0546875,7.23251029 L80.078125,7.23251029 L80.078125,30.1028807 L80.0040237,30.1028807 L99.8476365,49.9464934 L90.1722042,59.6219258 Z M83.984375,53.4340966" />
+                    </Grid>
+                </Viewbox>
+                <TextBlock Text="Home"
+                           Style="{StaticResource MenuTextBlockStyle}" />
+            </Grid>
+
+        </ListBox>
+    </Grid>
+
+</UserControl>

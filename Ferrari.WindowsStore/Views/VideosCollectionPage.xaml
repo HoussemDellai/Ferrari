@@ -1,0 +1,79 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      x:Class="Ferrari.WindowsStore.Views.VideosCollectionPage"
+      mc:Ignorable="d"
+      xmlns:UserControls="using:Ferrari.WindowsStore.UserControls"
+      xmlns:mmppf="using:Microsoft.PlayerFramework"
+      DataContext="{Binding VideosCollectionPage, Source={StaticResource Factory}}">
+
+    <Grid>
+
+        <UserControls:AnimatedImageUserControl />
+
+        <Grid Name="FullScreenGrid"
+              Visibility="Visible">
+            <Button  Margin="39,59,39,0"
+                     Style="{StaticResource NavigationBackButtonNormalStyle}"
+                     VerticalAlignment="Top"
+                     HorizontalAlignment="Left"
+                     Command="{Binding NavigateToBackPageCommand}" />
+            <ListView ItemsSource="{Binding YoutubeVideosCollection}"
+                      HorizontalAlignment="Right"
+                      ItemContainerStyle="{StaticResource ColoredBorderOfListViewItemStyle}"
+                      ItemTemplate="{StaticResource VideoItemDataTemplate}"
+                      SelectedItem="{Binding SelectedVideo, Mode=TwoWay}" />
+            <Grid x:Name="MediaGrid"
+                  Margin="80,140,520,140">
+                <!--<MediaElement PosterSource="{Binding SelectedVideo.Thumbnail}"
+                              Source="{Binding SelectedVideo.VideoLink}"
+                              />-->
+                <mmppf:MediaPlayer PosterSource="{Binding SelectedVideo.Thumbnail}"
+                                   Source="{Binding SelectedVideo.VideoLink}"
+                                   IsAudioSelectionEnabled="True"
+                                   IsDurationVisible="True"
+                                   IsFullScreenVisible="True"
+                                   IsVolumeVisible="True"
+                                   Background="{StaticResource MainRedColor}"
+                                   IsFullScreenChanged="MediaPlayer_OnIsFullScreenChanged" />
+            </Grid>
+        </Grid>
+        <Grid Name="SnappedGrid"
+              Visibility="Collapsed">
+            <Grid>
+                <Button  Margin="39,35,39,0"
+                         Style="{StaticResource NavigationBackButtonSmallStyle}"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Left"
+                         Command="{Binding NavigateToBackPageCommand}" />
+                <mmppf:MediaPlayer PosterSource="{Binding SelectedVideo.Thumbnail}"
+                                   Source="{Binding SelectedVideo.VideoLink}"
+                                   IsAudioSelectionEnabled="True"
+                                   IsDurationVisible="True"
+                                   IsVolumeVisible="True"
+                                   Background="{StaticResource MainRedColor}"
+                                   Height="300"
+                                   VerticalAlignment="Top"
+                                   Margin="0,80,0,24" />
+                <GridView ItemsSource="{Binding YoutubeVideosCollection}"
+                          ItemContainerStyle="{StaticResource ColoredBorderOfGridViewItemStyle}"
+                          ItemTemplate="{StaticResource SnappedVideoItemDataTemplate}"
+                          SelectedItem="{Binding SelectedVideo, Mode=TwoWay}"
+                          Margin="0,385,0,0" />
+            </Grid>
+        </Grid>
+    </Grid>
+    <Page.TopAppBar>
+        <AppBar>
+            <UserControls:TopAppBarUserControl />
+        </AppBar>
+    </Page.TopAppBar>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Reshare"
+                          Command="{Binding ShareItemCommand}"
+                          CommandParameter="{Binding SelectedVideo}" />
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>
