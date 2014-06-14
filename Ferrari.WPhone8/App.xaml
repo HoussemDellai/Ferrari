@@ -28,6 +28,14 @@
 
         <toolkit:RelativeTimeConverter x:Key="RelativeTimeConverter" />
 
+        <DataTemplate x:Key="HeaderDataTemplate">
+            <TextBlock Text="{Binding }"
+                       VerticalAlignment="Top"
+                       Margin="-3,68,0,0"
+                       Style="{StaticResource PhoneTextTitle1Style}" />
+
+        </DataTemplate>
+
         <DataTemplate x:Key="MainPivotItem">
             <phone:PivotItem>
                 <StackPanel Orientation="Vertical"
@@ -50,8 +58,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="ItemDataTemplate">
-            <Grid Height="100"
-                  Margin="0,0,0,12">
+            <Grid Margin="0,0,0,12">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Tap">
                         <i:InvokeCommandAction Command="{Binding MainPage.NavigateToDetailsPageCommand, Mode=OneWay, Source={StaticResource Factory}}"
@@ -64,23 +71,22 @@
                 </Grid.ColumnDefinitions>
                 <Image Source="{Binding ImageUrl}"
                        Stretch="UniformToFill"
-                       Grid.Column="0" />
+                       Grid.Column="0"
+                       Height="100" 
+                       VerticalAlignment="Top"/>
                 <StackPanel Orientation="Vertical"
-                            Grid.Column="1">
+                            Grid.Column="1"
+                            Margin="0,-6,0,0">
                     <TextBlock Text="{Binding Title}"
-                               TextWrapping="Wrap"
-                               Style="{StaticResource PhoneTextLargeStyle}"
-                               FontSize="20"
-                               MaxHeight="85"
-                               TextTrimming="WordEllipsis" />
+                               TextWrapping="Wrap" 
+                               Style="{StaticResource PhoneTextNormalStyle}" />
                     <TextBlock Text="{Binding PublishDate, Converter={StaticResource RelativeTimeConverter}}"
                                TextWrapping="Wrap"
-                               Style="{StaticResource PhoneTextLargeStyle}"
-                               FontSize="11"
-                               Opacity="0.7"
-                               TextTrimming="WordEllipsis" />
+                               Style="{StaticResource PhoneTextSmallStyle}"
+                               HorizontalAlignment="Right" />
                 </StackPanel>
             </Grid>
+
         </DataTemplate>
 
         <sys:Double x:Key="PanoramaItemHeaderFontSize">66</sys:Double>
