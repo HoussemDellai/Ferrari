@@ -68,45 +68,54 @@
         </BindableApplicationBar:BindableApplicationBar>
     </BindableApplicationBar:Bindable.ApplicationBar>
 
-    <ScrollViewer DataContext="{Binding SelectedItem, Mode=TwoWay}">
-        <StackPanel Orientation="Vertical">
-            <TextBlock Text="{Binding Title}"
-                       FontSize="32"
-                       TextWrapping="Wrap"
-                       Margin="24"
-                       Foreground="White" FontWeight="SemiBold" />
-            <StackPanel Orientation="Horizontal"
-                        Height="280"
-                        Margin="24,0">
-                <StackPanel Background="{StaticResource MainRedColorBrush}"
-                            Width="12"/>
-                <Image Source="{Binding ImageUrl}" />
+    <Grid x:Name="LayoutRoot">
+        
+        <Grid VerticalAlignment="Top"
+              Height="9"
+              Background="{StaticResource MainRedColorBrush}" />
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ferrari magazine" VerticalAlignment="Top" Margin="24,51,0,0" Style="{StaticResource PhoneTextSmallStyle}"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="News" VerticalAlignment="Top" Style="{StaticResource PanoramaItemHeaderTextStyle}" Margin="19,57,0,0"/>
+
+        
+        <ScrollViewer DataContext="{Binding SelectedItem, Mode=TwoWay}"
+                      Margin="0,206,0,0">
+            
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="{Binding Title}"
+                           FontSize="32"
+                           TextWrapping="Wrap"
+                           Margin="24,0,24,24"
+                           Foreground="White"
+                           FontWeight="SemiBold" />
+                <StackPanel Orientation="Horizontal"
+                            Height="280"
+                            Margin="24,0">
+                    <StackPanel Background="{StaticResource MainRedColorBrush}"
+                                Width="9" />
+                    <Image Source="{Binding ImageUrl}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Margin="24,24,24,12"
+                            Opacity="0.8">
+                    <TextBlock Text="Published "
+                               Margin="0,0,-9,0"
+                               Style="{StaticResource PhoneTextSmallStyle}" />
+                    <TextBlock Text="{Binding PublishDate, Converter={StaticResource RelativeTimeConverter}}"
+                               Style="{StaticResource PhoneTextSmallStyle}" />
+                </StackPanel>
+                <RichTextBox LineHeight="40"
+                             Padding="0,0,0,94">
+                    <Paragraph>
+                        <InlineUIContainer>
+                            <TextBlock Text="{Binding TextNews}"
+                                       TextWrapping="Wrap"
+                                       Margin="12" />
+                        </InlineUIContainer>
+                    </Paragraph>
+                </RichTextBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="24,36,24,12" Opacity="0.8">
-            	<TextBlock
-            		VerticalAlignment="Center"
-            		FontSize="16"
-            		Foreground="White"
-            		TextWrapping="Wrap" Text="Published on "
-            	/>
-            	<TextBlock Text="{Binding PublishDate, Converter={StaticResource RelativeTimeConverter}}"
-            		VerticalAlignment="Center"
-            		FontSize="16"
-            		Foreground="White"
-            		TextWrapping="Wrap"
-            	/>
-            </StackPanel>
-            <RichTextBox LineHeight="40"
-                         Padding="0,0,0,94">
-                <Paragraph>
-                    <InlineUIContainer>
-                        <TextBlock Text="{Binding TextNews}"
-                                   TextWrapping="Wrap"
-                                   Margin="12" />
-                    </InlineUIContainer>
-                </Paragraph>
-            </RichTextBox>
-        </StackPanel>
-    </ScrollViewer>
+        </ScrollViewer>
+
+    </Grid>
 
 </phone:PhoneApplicationPage>

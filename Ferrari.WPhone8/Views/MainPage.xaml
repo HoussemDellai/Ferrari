@@ -39,6 +39,7 @@
     </toolkit:TransitionService.NavigationOutTransition>
 
     <phone:PhoneApplicationPage.Resources>
+        <Converters:PortraitImageConverter x:Key="PortraitImageConverter" />
         <!--<Converters:IntToIncrementedIntConverter x:Key="IntToIncrementedIntConverter" />-->
         <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <Converters:YoutubeVideosCollectionToLastCollectionConverter x:Key="YoutubeVideosCollectionToLastCollectionConverter" />
@@ -67,22 +68,21 @@
           Margin="0,0,0,30">
 
         <phone:Panorama x:Name="MainPanorama">
-            
+
             <phone:Panorama.Background>
                 <ImageBrush ImageSource="http://farm3.staticflickr.com/2922/14300798561_359f526fbf_k.jpg"
                             Stretch="UniformToFill"
-                            Opacity="0.4"
-                            />
+                            Opacity="0.4" />
             </phone:Panorama.Background>
-            
+
             <phone:PanoramaItem x:Name="FeaturedPanoramaItem">
-                <Grid Margin="-12,-40,0,0">
+                <Grid Margin="-12,-30,0,0">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Tap">
                             <i:InvokeCommandAction Command="{Binding NavigateToAlbumPhotosPageCommand, Mode=OneWay}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
-                    <Image Source="{Binding FlickrImagesCollection[0].LargeImageUrl}"
+                    <Image Source="{Binding FlickrImagesCollection, Converter={StaticResource PortraitImageConverter}}"
                            Stretch="UniformToFill"
                            HorizontalAlignment="Center" />
                     <Grid VerticalAlignment="Bottom"
@@ -710,6 +710,7 @@
             </phone:PanoramaItem>
 
             <phone:PanoramaItem Name="TweetsPanoramaItem"
+                                
                                 Header="{Binding SectionNames[6], Source={StaticResource Constants}}"
                                 HeaderTemplate="{StaticResource HeaderDataTemplate}">
 
@@ -730,6 +731,7 @@
                                                Style="{StaticResource PhoneTextNormalStyle}" />
                                     <TextBlock Text="{Binding PublishDate, Converter={StaticResource RelativeTimeConverter}}"
                                                TextWrapping="Wrap"
+                                               HorizontalAlignment="Right"
                                                Style="{StaticResource PhoneTextSmallStyle}" />
                                 </StackPanel>
                             </Grid>
@@ -742,7 +744,7 @@
         </phone:Panorama>
 
         <Grid VerticalAlignment="Top"
-              Height="12"
+              Height="9"
               Background="{StaticResource MainRedColorBrush}" />
 
         <TextBlock Text="Ferrari Magazine"

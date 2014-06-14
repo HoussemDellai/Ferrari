@@ -39,42 +39,11 @@
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
 
-    <!--<phone:PhoneApplicationPage.Resources>
-        <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
-    </phone:PhoneApplicationPage.Resources>-->
-
     <Grid>
         <Grid VerticalAlignment="Top"
-              Height="12"
+              Height="9"
               Background="{StaticResource MainRedColorBrush}" />
-        <Grid Height="200"
-              Background="{StaticResource MainRedColorBrush}"
-              VerticalAlignment="Top"
-              RenderTransformOrigin="0.5,0.5"
-              Margin="-173.5,8.751,36.5,0"
-              UseLayoutRounding="False"
-              d:LayoutRounding="Auto">
-            <Grid.RenderTransform>
-                <CompositeTransform Rotation="-33.853"
-                                    TranslateY="-20"
-                                    TranslateX="-80" />
-            </Grid.RenderTransform>
 
-        </Grid>
-        <!--<Grid Height="134"
-              Background="{StaticResource MainRedColorBrush}"
-              VerticalAlignment="Top"
-              RenderTransformOrigin="0.5,0.5"
-              Margin="-126.749,-18.009,-10.251,0"
-              UseLayoutRounding="False"
-              d:LayoutRounding="Auto">
-            <Grid.RenderTransform>
-                <CompositeTransform Rotation="-20.334"
-                                    TranslateY="-20"
-                                    TranslateX="-80" />
-            </Grid.RenderTransform>
-
-        </Grid>-->
         <Grid VerticalAlignment="Top"
               HorizontalAlignment="Left"
               Height="100"
@@ -94,11 +63,10 @@
                    FontSize="35"
                    Foreground="White" />
         <phone:LongListSelector ItemsSource="{Binding YoutubeVideosCollection}"
-                                Margin="24,130,0,0">
+                                Margin="24,204,0,0">
             <phone:LongListSelector.ItemTemplate>
                 <DataTemplate>
-                    <Grid Height="100"
-                          Margin="0,0,0,12">
+                    <Grid Margin="0,0,0,12">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Tap">
                                 <i:InvokeCommandAction Command="{Binding MainPage.NavigateToVideoPlayerPageCommand, Mode=OneWay, Source={StaticResource Factory}}"
@@ -111,21 +79,22 @@
                         </Grid.ColumnDefinitions>
                         <Image Source="{Binding Thumbnail}"
                                Stretch="UniformToFill"
+                               Height="100"
+                               VerticalAlignment="Top"
                                Grid.Column="0" />
 
                         <StackPanel Orientation="Vertical"
-                                    Grid.Column="1">
+                                    Grid.Column="1"
+                                    Margin="0,-6,0,0">
                             <TextBlock Text="{Binding Title}"
                                        TextWrapping="Wrap"
-                                       Style="{StaticResource PhoneTextLargeStyle}"
-                                       FontSize="20"
-                                       MaxHeight="60"
-                                       TextTrimming="WordEllipsis" />
+                                       Style="{StaticResource PhoneTextNormalStyle}" />
                             <StackPanel Orientation="Horizontal"
-                                        Height="40">
+                                        Height="36"
+                                        HorizontalAlignment="Right">
                                 <Grid RenderTransformOrigin="0.5,0.5"
-                                      Margin="3,0,0,0"
-                                      Opacity="0.7">
+                                      Opacity="0.6"
+                                      Margin="0,-12,-6,0">
                                     <Grid.RenderTransform>
                                         <CompositeTransform ScaleX="0.5"
                                                             ScaleY="0.5" />
@@ -134,8 +103,8 @@
                                     <Image Source="/Assets/Images/basecircle.png" />
                                 </Grid>
                                 <TextBlock Text="{Binding PubDate, Converter={StaticResource RelativeTimeConverter}}"
-                                           VerticalAlignment="Center"
-                                           Opacity="0.7" />
+                                           
+                                           Style="{StaticResource PhoneTextSmallStyle}" />
                             </StackPanel>
                         </StackPanel>
                     </Grid>
@@ -147,11 +116,11 @@
         <!--<UserControls:TopAppBarPage Name="TopAppBarPage"
                                     Visibility="{Binding IsTopAppBarVisible, Converter={StaticResource BoolToVisibilityConverter}, Mode=TwoWay}" />-->
 
-        <!--<Image Source="/Assets/AlignmentGrid.png"
+        <Image Source="/Assets/AlignmentGrid.png"
                VerticalAlignment="Top"
                Height="800"
                Width="480"
-               IsHitTestVisible="False" />-->
+               IsHitTestVisible="False" />
     </Grid>
 
     <BindableApplicationBar:Bindable.ApplicationBar>
