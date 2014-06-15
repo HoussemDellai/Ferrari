@@ -15,7 +15,7 @@ namespace Ferrari.Converters
             if (!(value is bool))
                 return Visibility.Collapsed;
 
-            var isTrue = (bool) value;
+            var isTrue = (bool) value ;
 
             if (isTrue)
             {

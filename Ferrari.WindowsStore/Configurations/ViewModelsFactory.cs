@@ -47,7 +47,9 @@ namespace Ferrari.Configurations
 
             container.RegisterType<ITweetsRepository, TweetsRepository>();
 
-            container.RegisterType<ILockScreenService, LockScreenService>();
+			container.RegisterType<ICarsRepository, CarsRepository>();
+
+			container.RegisterType<ILockScreenService, LockScreenService>();
 
             container.RegisterType<IContactsService, ContactsService>();
 
@@ -118,7 +120,15 @@ namespace Ferrari.Configurations
             }
         }
 
-        private static void RegisterInstancesForDesignMode(IUnityContainer container)
+		public CarSpecificationViewModel CarSpecificationPage
+		{
+			get
+			{
+				return ServiceLocator.Current.GetInstance<CarSpecificationViewModel>();
+			}
+		}
+
+		private static void RegisterInstancesForDesignMode(IUnityContainer container)
         {
             container.RegisterInstance(ItemDesignTimeData.ItemsCollectionDesign);
             container.RegisterInstance(ItemDesignTimeData.ItemDesign);

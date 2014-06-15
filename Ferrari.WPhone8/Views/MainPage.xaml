@@ -70,11 +70,12 @@
         <phone:Panorama x:Name="MainPanorama">
 
             <phone:Panorama.Background>
-                <ImageBrush ImageSource="http://farm3.staticflickr.com/2922/14300798561_359f526fbf_k.jpg"
+                <ImageBrush ImageSource="{Binding FlickrImagesCollection[0].LargeImageUrl}"
                             Stretch="UniformToFill"
                             Opacity="0.4" />
             </phone:Panorama.Background>
-
+                                  <!--Source="http://farm3.staticflickr.com/2922/14300798561_359f526fbf_k.jpg"-->
+                            
             <phone:PanoramaItem x:Name="FeaturedPanoramaItem">
                 <Grid Margin="-12,-30,0,0">
                     <i:Interaction.Triggers>

@@ -117,6 +117,7 @@
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Contracts\ICarsRepository.cs" />
     <Compile Include="Contracts\IContactsService.cs" />
     <Compile Include="Contracts\IDataService.cs" />
     <Compile Include="Contracts\IDialogService.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Tweet.cs" />
     <Compile Include="Models\YoutubeVideo.cs" />
+    <Compile Include="Repositories\CarsRepository.cs" />
     <Compile Include="Repositories\ImagesRepository.cs" />
     <Compile Include="Repositories\ItemsRepository.cs" />
     <Compile Include="Repositories\TweetsRepository.cs" />
@@ -183,6 +185,7 @@
     <Compile Include="ViewModels\AboutUsViewModel.cs" />
     <Compile Include="ViewModels\AlbumPhotosPageViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\CarSpecificationViewModel.cs" />
     <Compile Include="ViewModels\ItemDetailsPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="Configurations\ViewModelsFactory.cs" />

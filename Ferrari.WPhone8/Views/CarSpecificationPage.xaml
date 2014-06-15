@@ -1,0 +1,97 @@
+﻿<phone:PhoneApplicationPage x:Class="Ferrari.WPhone8.Views.CarSpecificationPage"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource PhoneFontSizeNormal}"
+                            Foreground="{StaticResource PhoneForegroundBrush}"
+                            SupportedOrientations="Portrait"
+                            Orientation="Portrait"
+                            mc:Ignorable="d"
+                            shell:SystemTray.IsVisible="True"
+                            DataContext="{Binding CarSpecificationPage, Mode=OneWay, Source={StaticResource Factory}}">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot"
+          DataContext="{Binding CarsCollection[1]}"
+          Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0"
+                    Margin="12,17,0,28">
+            <TextBlock Style="{StaticResource PhoneTextNormalStyle}" />
+            <TextBlock Text="{Binding Name}"
+                       Margin="9,-7,0,0"
+                       Style="{StaticResource PhoneTextTitle1Style}" />
+        </StackPanel>
+
+        <ListBox Grid.Row="1"
+                 Margin="24,0">
+
+            <ListBoxItem>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock>
+                        <Run Text="{Binding EnginePower}" />
+                        <Run Text=" hp" />
+                    </TextBlock>
+                    <TextBlock>
+                    <Run Text="{Binding EngineTorque}" />
+                        <Run Text=" kw" />
+                    </TextBlock>
+                    <TextBlock>
+                      <Run Text="{Binding EngineRpm}" />
+                        <Run Text=" RPM" />
+                    </TextBlock>
+                    <TextBlock>
+                        <Run Text="V" />
+                        <Run Text="{Binding EngineCylinders}" />
+                    </TextBlock>
+                    <TextBlock>
+                        <Run Text="0 - 100 km/h " />
+                        <Run Text="{Binding FromZeroTo100}" />
+                        <Run Text=" s" />
+                    </TextBlock>
+                    <TextBlock>
+                        <Run Text="0 - 200 km/h " />
+                        <Run Text="{Binding FromZeroTo200}" />
+                        <Run Text=" s" />
+                    </TextBlock>
+                    <TextBlock>
+                        <Run Text="{Binding Speed}" />
+                        <Run Text=" km/h" />
+                    </TextBlock>
+                    <TextBlock>
+                        <Run Text="{Binding FuelConsumption}" />
+                        <Run Text=" L/100km" />
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap"
+                               Text="{Binding PromotionalDescription}" />
+                    <TextBlock TextWrapping="Wrap"
+                               Text="{Binding Description}" />
+                </StackPanel>
+            </ListBoxItem>
+
+            <ListBoxItem MaxHeight="1500">
+                <phone:LongListSelector ItemsSource="{Binding ImagesUrlCollection}"
+                                        Width="420">
+                    <phone:LongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding }"
+                                   Margin="0,0,0,12" />
+                        </DataTemplate>
+                    </phone:LongListSelector.ItemTemplate>
+
+                </phone:LongListSelector>
+            </ListBoxItem>
+
+        </ListBox>
+    </Grid>
+
+</phone:PhoneApplicationPage>
