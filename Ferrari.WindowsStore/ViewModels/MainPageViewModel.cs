@@ -40,11 +40,14 @@ namespace Ferrari.ViewModels
 		private RelayCommand _navigateToRacingPageCommand;
 		private ICommand _navigateToVideoPlayerPageCommand;
 		private RelayCommandGeneric<YoutubeVideo> _navigateToVideosCollectionPageCommand;
+		private ICommand _navigateToCarSpecificationPageCommand;
 		private List<Item> _newsCollection;
 		private List<Item> _racingCollection;
 		private RelayCommand _refreshDataCommand;
 		private List<Tweet> _tweetsCollection;
 		private List<YoutubeVideo> _youtubeVideosCollection;
+		private ICarsRepository _carsRepository;
+		private List<Car> _carModelsCollection;
 
 		#endregion
 
@@ -222,6 +225,25 @@ namespace Ferrari.ViewModels
 			}
 		}
 
+		public ICommand NavigateToCarSpecificationPageCommand
+		{
+			get
+			{
+				if (_navigateToCarSpecificationPageCommand == null)
+				{
+					_navigateToCarSpecificationPageCommand = new RelayCommandGeneric<Car>(car =>
+					{
+						if (car != null)
+						{
+							_unityContainer.RegisterInstance(car);
+							_pageNavigationService.NavigateToCarSpecificationPage();
+						}
+					});
+				}
+				return _navigateToCarSpecificationPageCommand;
+			}
+		}
+
 		public RelayCommand NavigateToAlbumPhotosPageCommand
 		{
 			get
@@ -300,6 +322,15 @@ namespace Ferrari.ViewModels
 			}
 		}
 
+		public List<Car> CarModelsCollection
+		{
+			get { return _carModelsCollection; }
+			set  { 
+_carModelsCollection = value; 
+OnPropertyChanged();
+}
+		}
+
 		#endregion
 
 		#region Constructor
@@ -315,6 +346,7 @@ namespace Ferrari.ViewModels
 			ITweetsRepository tweetsRepository,
 			IImagesRepository imagesRepository,
 			IVideosRepository videosRepository,
+ICarsRepository carsRepository,
 			IFlickrService flickrService,
 			ISharingService sharingService)
 			: base(
@@ -332,6 +364,9 @@ namespace Ferrari.ViewModels
 			_imagesRepository = imagesRepository;
 			_videosRepository = videosRepository;
 			_flickrService = flickrService;
+_carsRepository = carsRepository;
+
+//CarModelsCollection = carsRepository.GetAll();
 
 #if WINDOWS_PHONE
             if (DesignerProperties.IsInDesignTool)
@@ -388,6 +423,10 @@ namespace Ferrari.ViewModels
 			{
 				await _imagesRepository.SaveFlickrImagesCollectionAsync(FlickrImagesCollection);
 			}
+
+SendLoadedDataPercentageMessageToSplashScreen(20);
+
+CarModelsCollection = _carsRepository.GetAll();
 
 			SendLoadedDataPercentageMessageToSplashScreen(30);
 
@@ -501,6 +540,8 @@ namespace Ferrari.ViewModels
 		{
 			FlickrImagesCollection = await _flickrService.GetFlickrImagesAsync(Constants.FlickrLink);
 
+CarModelsCollection = _carsRepository.GetAll();
+
 			CarsCollection = await _dataService.GetItemsAsync(Constants.CarsLink);
 
 			FormulaOneCollection = await _dataService.GetItemsAsync(Constants.FormulaOneLink);
@@ -583,6 +624,8 @@ namespace Ferrari.ViewModels
                 itemDesign
             };
 
+CarModelsCollection = _carsRepository.GetAll();
+
 			FlickrImagesCollection = new List<FlickrImage>
             {
                 new FlickrImage
@@ -601,6 +644,8 @@ namespace Ferrari.ViewModels
 		public async Task InitializeDataFromOfflineAsync()
 		{
 			FlickrImagesCollection = await _imagesRepository.GetFlickrImagesCollectionAsync();
+
+			CarModelsCollection = _carsRepository.GetAll();
 
 			FormulaOneCollection = await _itemsRepository.GetItemsCollectionByCategoryAsync(Constants.SectionNames[3]);
 

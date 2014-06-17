@@ -74,8 +74,8 @@
                             Stretch="UniformToFill"
                             Opacity="0.4" />
             </phone:Panorama.Background>
-                                  <!--Source="http://farm3.staticflickr.com/2922/14300798561_359f526fbf_k.jpg"-->
-                            
+            <!--Source="http://farm3.staticflickr.com/2922/14300798561_359f526fbf_k.jpg"-->
+
             <phone:PanoramaItem x:Name="FeaturedPanoramaItem">
                 <Grid Margin="-12,-30,0,0">
                     <i:Interaction.Triggers>
@@ -362,6 +362,66 @@
 
             </phone:PanoramaItem>
 
+            <phone:PanoramaItem Name="ModelsPanoramaItem"
+                                Header="Models"
+                                HeaderTemplate="{StaticResource HeaderDataTemplate}">
+
+                <phone:LongListSelector x:Name="longListSelector"
+                                        ItemsSource="{Binding CarModelsCollection}"
+                                        Margin="12,6,0,0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Tap">
+                            <i:InvokeCommandAction Command="{Binding NavigateToCarSpecificationPageCommand, Mode=OneWay}"
+                                                   CommandParameter="{Binding SelectedItem, ElementName=longListSelector}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <phone:LongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,0,0,12">
+                                <Image Stretch="Uniform"
+                                       Source="{Binding ImagesUrlCollection[0]}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" />
+                                <Grid VerticalAlignment="Top"
+                                      HorizontalAlignment="Right"
+                                      Width="300">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="5*" />
+                                        <ColumnDefinition Width="1*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Background="{StaticResource MainRedColorBrush}"
+                                          Opacity="0.8"
+                                          Grid.ColumnSpan="2" />
+                                    <StackPanel Orientation="Horizontal"
+                                                HorizontalAlignment="Center"
+                                                Grid.Column="0"
+                                                Margin="16,0">
+                                        <TextBlock Text="{Binding Name}"
+                                                   Style="{StaticResource PhoneTextTitle3Style}"
+                                                   Margin="12,6"
+                                                   FontFamily="Segoe WP Semibold" />
+                                        <TextBlock Style="{StaticResource PhoneTextSmallStyle}"
+                                                   Margin="12,9">
+                                            <Run Text="{Binding EnginePower}" />
+                                            <Run Text=" hp" />
+                                        </TextBlock>
+
+                                    </StackPanel>
+                                    <Grid Width="30"
+                                          Grid.Column="1"
+                                          Opacity="0.8"
+                                          HorizontalAlignment="Left">
+                                        <Image Source="/Assets/Images/basecircle.png" />
+                                        <Image Source="/Assets/AppBar/next.png" />
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </phone:LongListSelector.ItemTemplate>
+                </phone:LongListSelector>
+
+            </phone:PanoramaItem>
+
             <phone:PanoramaItem Name="CarsPanoramaItem"
                                 Header="{Binding SectionNames[1], Source={StaticResource Constants}}"
                                 HeaderTemplate="{StaticResource HeaderDataTemplate}">
@@ -415,14 +475,10 @@
                                 Value="0,0,12,12" />
                         <Setter Property="Background"
                                 Value="{StaticResource MainRedColorBrush}" />
-                        <!--<Setter Property="Source"
-                                Value="{Binding Thumbnail}" />
-                        <Setter Property="Notification"
-                                Value="{Binding Title}" />-->
+
                         <Setter Property="DisplayNotification"
                                 Value="True" />
-                        <!--<Setter Property="Title"
-                                Value="{Binding Title}" />-->
+
                     </Style>
                 </phone:PanoramaItem.Resources>
                 <Grid  Margin="12,6,0,0">
@@ -431,7 +487,6 @@
                         <RowDefinition Height="222" />
                         <RowDefinition Height="222" />
                         <RowDefinition Height="222" />
-                        <!--<RowDefinition Height="55" />-->
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="111" />
@@ -711,7 +766,6 @@
             </phone:PanoramaItem>
 
             <phone:PanoramaItem Name="TweetsPanoramaItem"
-                                
                                 Header="{Binding SectionNames[6], Source={StaticResource Constants}}"
                                 HeaderTemplate="{StaticResource HeaderDataTemplate}">
 
@@ -726,7 +780,8 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{Binding ImageUrl}"
                                        VerticalAlignment="Top" />
-                                <StackPanel Grid.Column="1">
+                                <StackPanel Grid.Column="1"
+                                            Margin="0,-6,0,0">
                                     <TextBlock Text="{Binding Text}"
                                                TextWrapping="Wrap"
                                                Style="{StaticResource PhoneTextNormalStyle}" />

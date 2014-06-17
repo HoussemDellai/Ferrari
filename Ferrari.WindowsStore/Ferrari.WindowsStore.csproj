@@ -134,6 +134,7 @@
     <Compile Include="Contracts\IVideosRepository.cs" />
     <Compile Include="Contracts\IVideosService.cs" />
     <Compile Include="DesignTimeData\ItemDesignTimeData.cs" />
+    <Compile Include="Models\Car.cs" />
     <Compile Include="Models\FlickrImage.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Tweet.cs" />
@@ -178,6 +179,9 @@
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\CollectionToLastCollectionConverter.cs" />
     <Compile Include="Converters\IntToIncrementedIntConverter.cs" />
+    <Compile Include="UserControls\CarUserControl.xaml.cs">
+      <DependentUpon>CarUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\PreviousAndNextFromListUtilities.cs" />
     <Compile Include="Utilities\RelayCommand.cs" />
     <Compile Include="Utilities\RelayCommandGeneric.cs" />
@@ -276,6 +280,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\AnimatedImageUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CarUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

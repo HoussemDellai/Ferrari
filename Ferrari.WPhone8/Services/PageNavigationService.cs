@@ -87,5 +87,13 @@ namespace Ferrari.WindowsStore.Services
 
             return false;
         }
+
+		public void NavigateToCarSpecificationPage()
+		{
+			if (EnsureMainFrame())
+			{
+				_mainFrame.Navigate(new Uri("/Views/CarSpecificationPage.xaml", UriKind.Relative));
+			}
+		}
 	}
 }

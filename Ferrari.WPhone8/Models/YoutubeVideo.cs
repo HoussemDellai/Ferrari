@@ -14,14 +14,14 @@ namespace Ferrari.Models
         }
 
         [Column(CanBeNull = true)]
-        public String Id
+        public string Id
         {
             get;
             set;
         }
 
         [Column(CanBeNull = true)]
-        public String Title
+        public string Title
         {
             get;
             set;
@@ -35,21 +35,21 @@ namespace Ferrari.Models
         }
 
         [Column(CanBeNull = true)]
-        public String YoutubeLink
+        public string YoutubeLink
         {
             get;
             set;
         }
 
         [Column(CanBeNull = true)]
-        public String VideoLink
+        public string VideoLink
         {
             get;
             set;
         }
 
         [Column(CanBeNull = true)]
-        public String Thumbnail
+        public string Thumbnail
         {
             get;
             set;

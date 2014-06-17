@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ferrari.Contracts;
+using Ferrari.Models;
 using Ferrari.Repositories;
 using Ferrari.ViewModels;
 

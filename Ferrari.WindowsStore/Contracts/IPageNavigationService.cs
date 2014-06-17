@@ -16,5 +16,7 @@
 		void NavigateToAlbumPhotosPage();
 
 	    void NavigateToAboutUsPage();
+
+		void NavigateToCarSpecificationPage();
 	}
 }

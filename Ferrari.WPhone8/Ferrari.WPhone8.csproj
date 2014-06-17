@@ -195,6 +195,9 @@
     <Compile Include="..\Ferrari.WindowsStore\Messenger\Messaging\Messenger.Win8.cs">
       <Link>Messenger\Messaging\Messenger.Win8.cs</Link>
     </Compile>
+    <Compile Include="..\Ferrari.WindowsStore\Models\Car.cs">
+      <Link>Models\Car.cs</Link>
+    </Compile>
     <Compile Include="..\Ferrari.WindowsStore\Repositories\CarsRepository.cs">
       <Link>Repositories\CarsRepository.cs</Link>
     </Compile>
@@ -336,11 +339,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Cars.Images\458italia1ext.jpg" />
+    <Content Include="Cars.Images\458italia3ext.jpg" />
     <Content Include="Cars.Images\458italia1int.jpg" />
     <Content Include="Cars.Images\458italia2ext.jpg" />
     <Content Include="Cars.Images\458italia2int.jpg" />
-    <Content Include="Cars.Images\458italia3ext.jpg" />
+    <Content Include="Cars.Images\458italia1ext.jpg" />
     <Content Include="Cars.Images\458italia4ext.jpg" />
     <Content Include="Cars.Images\458italia5ext.jpg" />
     <Content Include="Cars.Images\458spider1ext.jpg" />
@@ -358,6 +361,8 @@
     <Content Include="Cars.Images\californiaT3int.jpg" />
     <Content Include="Cars.Images\californiaT4ext.jpg" />
     <Content Include="Cars.Images\californiaT5ext.jpg" />
+    <Content Include="Cars.Images\Engines\ff.jpg" />
+    <Content Include="Cars.Images\Engines\LaFerrari.jpg" />
     <Content Include="Cars.Images\f12berlinetta1ext.jpg" />
     <Content Include="Cars.Images\f12berlinetta1int.jpg" />
     <Content Include="Cars.Images\f12berlinetta2ext.jpg" />
@@ -365,7 +370,7 @@
     <Content Include="Cars.Images\f12berlinetta3ext.jpg" />
     <Content Include="Cars.Images\f12berlinetta4ext.jpg" />
     <Content Include="Cars.Images\f12berlinetta5ext.jpg" />
-    <Content Include="Cars.Images\ff1ext.jpg" />
+    <Content Include="Cars.Images\ff5ext.jpg" />
     <Content Include="Cars.Images\ff1int.jpg" />
     <Content Include="Cars.Images\ff2ext.jpg" />
     <Content Include="Cars.Images\ff2int.jpg" />
@@ -373,14 +378,14 @@
     <Content Include="Cars.Images\ff3int.jpg" />
     <Content Include="Cars.Images\ff4ext.jpg" />
     <Content Include="Cars.Images\ff4int.jpg" />
-    <Content Include="Cars.Images\ff5ext.jpg" />
-    <Content Include="Cars.Images\laferrari1ext.jpg" />
+    <Content Include="Cars.Images\ff1ext.jpg" />
+    <Content Include="Cars.Images\laferrari5ext.jpg" />
     <Content Include="Cars.Images\laferrari1int.jpg" />
     <Content Include="Cars.Images\laferrari2ext.jpg" />
     <Content Include="Cars.Images\laferrari2int.jpg" />
     <Content Include="Cars.Images\laferrari3ext.jpg" />
     <Content Include="Cars.Images\laferrari4ext.jpg" />
-    <Content Include="Cars.Images\laferrari5ext.jpg" />
+    <Content Include="Cars.Images\laferrari1ext.jpg" />
     <Content Include="Cars.Images\laferrari6ext.jpg" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
