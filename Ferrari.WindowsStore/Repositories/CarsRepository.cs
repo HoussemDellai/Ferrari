@@ -98,7 +98,6 @@ namespace Ferrari.Repositories
 "/Cars.Images/laferrari3ext.jpg",
 "/Cars.Images/laferrari4ext.jpg",
 "/Cars.Images/laferrari5ext.jpg",
-"/Cars.Images/laferrari6ext.jpg",
 "/Cars.Images/laferrari1int.jpg",
 "/Cars.Images/laferrari2int.jpg",
 },

@@ -386,7 +386,6 @@
     <Content Include="Cars.Images\laferrari3ext.jpg" />
     <Content Include="Cars.Images\laferrari4ext.jpg" />
     <Content Include="Cars.Images\laferrari1ext.jpg" />
-    <Content Include="Cars.Images\laferrari6ext.jpg" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />

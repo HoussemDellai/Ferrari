@@ -70,7 +70,7 @@
         <phone:Panorama x:Name="MainPanorama">
 
             <phone:Panorama.Background>
-                <ImageBrush ImageSource="{Binding FlickrImagesCollection[0].LargeImageUrl}"
+                <ImageBrush ImageSource="http://farm3.staticflickr.com/2922/14300798561_359f526fbf_k.jpg"
                             Stretch="UniformToFill"
                             Opacity="0.4" />
             </phone:Panorama.Background>

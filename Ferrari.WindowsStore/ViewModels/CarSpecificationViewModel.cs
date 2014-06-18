@@ -7,27 +7,39 @@ using Ferrari.Contracts;
 using Ferrari.Models;
 using Ferrari.Repositories;
 using Ferrari.ViewModels;
+using Microsoft.Practices.Unity;
 
 namespace Ferrari.ViewModels
 {
 	public class CarSpecificationViewModel : BaseViewModel
 	{
-		private List<Car> _carsCollection;
+		private Car _selectedCar;
 
-		public List<Car> CarsCollection
+		public Car SelectedCar
 		{
-			get { return _carsCollection; }
+			get
+			{ return _selectedCar; }
 			set
 			{
-				_carsCollection = value; 
+				_selectedCar = value;
 				OnPropertyChanged();
 			}
 		}
 
-		public CarSpecificationViewModel(ICarsRepository carsRepository)
+		public CarSpecificationViewModel(Car selectedCar)
 		{
 
-			CarsCollection = carsRepository.GetAll();
+			SelectedCar = selectedCar;   //carsRepository.GetAll();
+
+#if WINDOWS_PHONE
+			if (System.ComponentModel.DesignerProperties.IsInDesignTool)
+#endif
+//#if NETFX_CORE
+//			if (DesignMode.DesignModeEnabled)
+//#endif
+			{
+				SelectedCar = new CarsRepository().GetAll()[0];
+			}
 		}
 	}
 }

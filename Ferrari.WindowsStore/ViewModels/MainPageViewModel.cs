@@ -324,11 +324,13 @@ namespace Ferrari.ViewModels
 
 		public List<Car> CarModelsCollection
 		{
-			get { return _carModelsCollection; }
-			set  { 
-_carModelsCollection = value; 
-OnPropertyChanged();
-}
+			get
+			{ return _carModelsCollection; }
+			set
+			{
+				_carModelsCollection = value;
+				OnPropertyChanged();
+			}
 		}
 
 		#endregion
@@ -346,7 +348,7 @@ OnPropertyChanged();
 			ITweetsRepository tweetsRepository,
 			IImagesRepository imagesRepository,
 			IVideosRepository videosRepository,
-ICarsRepository carsRepository,
+			ICarsRepository carsRepository,
 			IFlickrService flickrService,
 			ISharingService sharingService)
 			: base(
@@ -364,12 +366,12 @@ ICarsRepository carsRepository,
 			_imagesRepository = imagesRepository;
 			_videosRepository = videosRepository;
 			_flickrService = flickrService;
-_carsRepository = carsRepository;
+			_carsRepository = carsRepository;
 
-//CarModelsCollection = carsRepository.GetAll();
+			//CarModelsCollection = carsRepository.GetAll();
 
 #if WINDOWS_PHONE
-            if (DesignerProperties.IsInDesignTool)
+			if (DesignerProperties.IsInDesignTool)
 #else // !WINDOWS_PHONE
 			if (DesignMode.DesignModeEnabled)
 #endif
@@ -424,9 +426,9 @@ _carsRepository = carsRepository;
 				await _imagesRepository.SaveFlickrImagesCollectionAsync(FlickrImagesCollection);
 			}
 
-SendLoadedDataPercentageMessageToSplashScreen(20);
+			SendLoadedDataPercentageMessageToSplashScreen(20);
 
-CarModelsCollection = _carsRepository.GetAll();
+			CarModelsCollection = _carsRepository.GetAll();
 
 			SendLoadedDataPercentageMessageToSplashScreen(30);
 
@@ -533,14 +535,14 @@ CarModelsCollection = _carsRepository.GetAll();
 		}
 
 		/// <summary>
-		///     Used only for design time data.
+		/// Used only for design time data.
 		/// </summary>
 		/// <returns></returns>
 		private async Task InitializeDataFromOnlineAsync()
 		{
 			FlickrImagesCollection = await _flickrService.GetFlickrImagesAsync(Constants.FlickrLink);
 
-CarModelsCollection = _carsRepository.GetAll();
+			CarModelsCollection = _carsRepository.GetAll();
 
 			CarsCollection = await _dataService.GetItemsAsync(Constants.CarsLink);
 
@@ -615,25 +617,25 @@ CarModelsCollection = _carsRepository.GetAll();
 			};
 
 			var items = new List<Item>
-            {
-                itemDesign,
-                itemDesign,
-                itemDesign,
-                itemDesign,
-                itemDesign,
-                itemDesign
-            };
+			{
+				itemDesign,
+				itemDesign,
+				itemDesign,
+				itemDesign,
+				itemDesign,
+				itemDesign
+			};
 
-CarModelsCollection = _carsRepository.GetAll();
+			CarModelsCollection = _carsRepository.GetAll();
 
 			FlickrImagesCollection = new List<FlickrImage>
-            {
-                new FlickrImage
-                {
-                    Title = "Ferrari 100 millia",
-                    LargeImageUrl = "http://farm8.staticflickr.com/7401/8855562948_2104e9d9c0_b.jpg",
-                },
-            };
+			{
+				new FlickrImage
+				{
+					Title = "Ferrari 100 millia",
+					LargeImageUrl = "http://farm8.staticflickr.com/7401/8855562948_2104e9d9c0_b.jpg",
+				},
+			};
 
 			NewsCollection = items;
 			NewsCollection = items;
