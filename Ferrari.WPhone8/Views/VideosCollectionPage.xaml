@@ -43,27 +43,19 @@
         <Grid VerticalAlignment="Top"
               Height="9"
               Background="{StaticResource MainRedColorBrush}" />
-
-        <Grid VerticalAlignment="Top"
-              HorizontalAlignment="Left"
-              Height="100"
-              Width="210">
-
-            <TextBlock Text="Ferrari Magazine"
-                       FontSize="24"
-                       VerticalAlignment="Top"
-                       FontWeight="SemiBold"
-                       Opacity="0.7"
-                       Margin="12,12"
-                       Foreground="White" />
-        </Grid>
-        <TextBlock Text="Videos"
-                   Margin="24,36"
+        <TextBlock Text="Ferrari Magazine"
+                   Style="{StaticResource PhoneTextSmallStyle}"
                    VerticalAlignment="Top"
-                   FontSize="35"
-                   Foreground="White" />
+                   HorizontalAlignment="Left"
+                   Margin="23,56,12,0" />
+        <TextBlock Text="Videos"
+                   VerticalAlignment="Top"
+                   Opacity="0.7"
+                   Style="{StaticResource PhoneTextTitle1Style}"
+                   Foreground="White"
+                   Margin="24,66,0,0" />
         <phone:LongListSelector ItemsSource="{Binding YoutubeVideosCollection}"
-                                Margin="24,204,0,0">
+                                Margin="24,208,0,0">
             <phone:LongListSelector.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="0,0,0,12">
@@ -103,7 +95,6 @@
                                     <Image Source="/Assets/Images/basecircle.png" />
                                 </Grid>
                                 <TextBlock Text="{Binding PubDate, Converter={StaticResource RelativeTimeConverter}}"
-                                           
                                            Style="{StaticResource PhoneTextSmallStyle}" />
                             </StackPanel>
                         </StackPanel>
@@ -116,11 +107,11 @@
         <!--<UserControls:TopAppBarPage Name="TopAppBarPage"
                                     Visibility="{Binding IsTopAppBarVisible, Converter={StaticResource BoolToVisibilityConverter}, Mode=TwoWay}" />-->
 
-        <Image Source="/Assets/AlignmentGrid.png"
+        <!--<Image Source="/Assets/AlignmentGrid.png"
                VerticalAlignment="Top"
                Height="800"
                Width="480"
-               IsHitTestVisible="False" />
+               IsHitTestVisible="False" />-->
     </Grid>
 
     <BindableApplicationBar:Bindable.ApplicationBar>

@@ -122,7 +122,7 @@
                         <Setter Property="Height"
                                 Value="62" />
                         <Setter Property="Background"
-                                Value="{StaticResource SecondColorBrush}" />
+                                Value="{StaticResource MainRedColorBrush}" />
                         <Setter Property="Width"
                                 Value="400" />
                         <!--<Setter Property="Background"

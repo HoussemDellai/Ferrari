@@ -13,7 +13,7 @@ namespace Ferrari.ViewModels
         private readonly ISharingService _sharingService;
         private readonly IUnityContainer _unityContainer;
         private YoutubeVideo _selectedVideo;
-        private ICommand _navigateToVideoPlayerPageCommand;
+        //private ICommand _navigateToVideoPlayerPageCommand;
       
 
         public VideosCollectionPageViewModel(IUnityContainer unityContainer,

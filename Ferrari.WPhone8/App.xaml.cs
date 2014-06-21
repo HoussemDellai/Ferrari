@@ -8,6 +8,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Info;
 using Microsoft.Phone.Shell;
 using Microsoft.Practices.ServiceLocation;
+using System.Threading.Tasks;
 
 namespace Ferrari.WPhone8
 {
@@ -67,12 +68,17 @@ namespace Ferrari.WPhone8
         // This code will not execute when the application is reactivated
         private async void Application_Launching(object sender, LaunchingEventArgs e)
         {
-            await ServiceLocator.Current.GetInstance<MainPageViewModel>().StartInitializeDataAsync();
+            await ServiceLocator.Current.GetInstance<MainPageViewModel>().InitializeDataFromOfflineAsync(); //StartInitializeDataAsync();
+
+            await Task.Delay(1000); // necessary to let time to initialize the RootFrame.BackStack.
 
             RootFrame.Navigate(new Uri("/Views/MainPage.xaml", UriKind.Relative));
 
             // do not navigate back to the splash screen page
-            RootFrame.RemoveBackEntry();
+            if (RootFrame.BackStack != null)
+            {
+                RootFrame.RemoveBackEntry();
+            }
         }
 
         //// Code to execute when the application is activated (brought to foreground)
