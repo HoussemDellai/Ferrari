@@ -161,7 +161,7 @@ namespace Ferrari.WindowsStore.Services
 
 		public void NavigateToCarSpecificationPage()
 		{
-			//Navigate(typeof(VideosCollectionPage));
+            Navigate(typeof(CarSpecificationPage));
 		}
 	}
 }

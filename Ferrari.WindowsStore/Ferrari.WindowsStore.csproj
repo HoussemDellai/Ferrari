@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Sqlite-Winrt.3.8.3\build\netcore45\Sqlite-Winrt.props" Condition="Exists('..\packages\Sqlite-Winrt.3.8.3\build\netcore45\Sqlite-Winrt.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -23,6 +24,7 @@
     <PackageCertificateThumbprint>081A1518489E0F8C87FCB407222E87DECD19D54D</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <NuGetPackageImportStamp>710deed5</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -133,6 +135,7 @@
     <Compile Include="Contracts\ITweetsService.cs" />
     <Compile Include="Contracts\IVideosRepository.cs" />
     <Compile Include="Contracts\IVideosService.cs" />
+    <Compile Include="Converters\StringToImageUrlConverter.cs" />
     <Compile Include="DesignTimeData\ItemDesignTimeData.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\FlickrImage.cs" />
@@ -201,6 +204,9 @@
     <Compile Include="Views\AlbumPhotosPage.xaml.cs">
       <DependentUpon>AlbumPhotosPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CarSpecificationPage.xaml.cs">
+      <DependentUpon>CarSpecificationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ItemDetailsPage.xaml.cs">
       <DependentUpon>ItemDetailsPage.xaml</DependentUpon>
     </Compile>
@@ -238,6 +244,53 @@
     <Content Include="Assets\Square310x310Logo.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
+    <Content Include="Cars.Images\458italia1ext.jpg" />
+    <Content Include="Cars.Images\458italia1int.jpg" />
+    <Content Include="Cars.Images\458italia2ext.jpg" />
+    <Content Include="Cars.Images\458italia2int.jpg" />
+    <Content Include="Cars.Images\458italia3ext.jpg" />
+    <Content Include="Cars.Images\458italia4ext.jpg" />
+    <Content Include="Cars.Images\458italia5ext.jpg" />
+    <Content Include="Cars.Images\458spider1ext.jpg" />
+    <Content Include="Cars.Images\458spider1int.jpg" />
+    <Content Include="Cars.Images\458spider2ext.jpg" />
+    <Content Include="Cars.Images\458spider2int.jpg" />
+    <Content Include="Cars.Images\458spider3ext.jpg" />
+    <Content Include="Cars.Images\458spider4ext.jpg" />
+    <Content Include="Cars.Images\458spider5ext.jpg" />
+    <Content Include="Cars.Images\californiaT1ext.jpg" />
+    <Content Include="Cars.Images\californiaT1int.jpg" />
+    <Content Include="Cars.Images\californiaT2ext.jpg" />
+    <Content Include="Cars.Images\californiaT2int.jpg" />
+    <Content Include="Cars.Images\californiaT3ext.jpg" />
+    <Content Include="Cars.Images\californiaT3int.jpg" />
+    <Content Include="Cars.Images\californiaT4ext.jpg" />
+    <Content Include="Cars.Images\californiaT5ext.jpg" />
+    <Content Include="Cars.Images\Engines\ff.jpg" />
+    <Content Include="Cars.Images\Engines\LaFerrari.jpg" />
+    <Content Include="Cars.Images\f12berlinetta1ext.jpg" />
+    <Content Include="Cars.Images\f12berlinetta1int.jpg" />
+    <Content Include="Cars.Images\f12berlinetta2ext.jpg" />
+    <Content Include="Cars.Images\f12berlinetta2int.jpg" />
+    <Content Include="Cars.Images\f12berlinetta3ext.jpg" />
+    <Content Include="Cars.Images\f12berlinetta4ext.jpg" />
+    <Content Include="Cars.Images\f12berlinetta5ext.jpg" />
+    <Content Include="Cars.Images\ff1ext.jpg" />
+    <Content Include="Cars.Images\ff1int.jpg" />
+    <Content Include="Cars.Images\ff2ext.jpg" />
+    <Content Include="Cars.Images\ff2int.jpg" />
+    <Content Include="Cars.Images\ff3ext.jpg" />
+    <Content Include="Cars.Images\ff3int.jpg" />
+    <Content Include="Cars.Images\ff4ext.jpg" />
+    <Content Include="Cars.Images\ff4int.jpg" />
+    <Content Include="Cars.Images\ff5ext.jpg" />
+    <Content Include="Cars.Images\laferrari1ext.jpg" />
+    <Content Include="Cars.Images\laferrari1int.jpg" />
+    <Content Include="Cars.Images\laferrari2ext.jpg" />
+    <Content Include="Cars.Images\laferrari2int.jpg" />
+    <Content Include="Cars.Images\laferrari3ext.jpg" />
+    <Content Include="Cars.Images\laferrari4ext.jpg" />
+    <Content Include="Cars.Images\laferrari5ext.jpg" />
     <Content Include="DesignTimeData\8855562948_2104e9d9c0_b.jpg" />
     <Content Include="DesignTimeData\bg_intro_motor.jpg" />
     <Content Include="DesignTimeData\car.jpg" />
@@ -249,6 +302,8 @@
     <Content Include="DesignTimeData\Novitec-Rosso-Ferrari.jpg" />
     <Content Include="DesignTimeData\small.png" />
     <Content Include="DesignTimeData\speciale_top.jpg" />
+    <Content Include="Engines\ff.jpg" />
+    <Content Include="Engines\LaFerrari.jpg" />
     <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -295,6 +350,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\CarSpecificationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ItemDetailsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -330,6 +389,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\netcore45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SQLiteWinRT">
+      <HintPath>..\packages\Sqlite-Winrt.3.8.3\lib\netcore45\SQLiteWinRT.winmd</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Net.Http.Extensions">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.18\lib\win8\System.Net.Http.Extensions.dll</HintPath>
     </Reference>
@@ -339,11 +402,17 @@
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0" />
+    <SDKReference Include="Callisto, Version=1.4.0">
+      <Name>Callisto</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.PlayerFramework.Xaml, Version=2.0.0.0">
+      <Name>Microsoft Player Framework</Name>
+    </SDKReference>
     <SDKReference Include="Microsoft.VCLibs, version=12.0">
       <Name>Microsoft Visual C++ 2013 Runtime Package for Windows</Name>
     </SDKReference>
-    <SDKReference Include="SQLite.WinRT81, Version=3.8.4.1">
-      <Name>SQLite for Windows Runtime %28Windows 8.1%291</Name>
+    <SDKReference Include="SQLite.WinRT81, Version=3.8.5">
+      <Name>SQLite for Windows Runtime %28Windows 8.1%29</Name>
     </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
@@ -356,6 +425,14 @@
     <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
   <Import Project="$(XamlSpyInstallPath)MSBuild\FirstFloor.XamlSpy.WinRT.targets" Condition="'$(XamlSpyInstallPath)' != '' and '$(Configuration)' == 'DEBUG'" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Sqlite-Winrt.3.8.3\build\netcore45\Sqlite-Winrt.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Sqlite-Winrt.3.8.3\build\netcore45\Sqlite-Winrt.props'))" />
+    <Error Condition="!Exists('..\packages\Sqlite-Winrt.3.8.3\build\netcore45\Sqlite-Winrt.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Sqlite-Winrt.3.8.3\build\netcore45\Sqlite-Winrt.targets'))" />
+  </Target>
+  <Import Project="..\packages\Sqlite-Winrt.3.8.3\build\netcore45\Sqlite-Winrt.targets" Condition="Exists('..\packages\Sqlite-Winrt.3.8.3\build\netcore45\Sqlite-Winrt.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

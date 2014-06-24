@@ -466,7 +466,7 @@ namespace Ferrari.ViewModels
 #endif
 #endif
 
-            //ContinueInitializeDataAsync();
+            ContinueInitializeDataAsync();
             //#endif
         }
 

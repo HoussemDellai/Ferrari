@@ -83,10 +83,10 @@
                                        Style="{StaticResource PhoneTextNormalStyle}" />
                             <StackPanel Orientation="Horizontal"
                                         Height="36"
-                                        HorizontalAlignment="Right">
+                                        HorizontalAlignment="Left">
                                 <Grid RenderTransformOrigin="0.5,0.5"
                                       Opacity="0.6"
-                                      Margin="0,-12,-6,0">
+                                      Margin="0,-6,-6,0">
                                     <Grid.RenderTransform>
                                         <CompositeTransform ScaleX="0.5"
                                                             ScaleY="0.5" />

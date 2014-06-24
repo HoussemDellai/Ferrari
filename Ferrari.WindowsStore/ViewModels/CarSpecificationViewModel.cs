@@ -34,9 +34,9 @@ namespace Ferrari.ViewModels
 #if WINDOWS_PHONE
 			if (System.ComponentModel.DesignerProperties.IsInDesignTool)
 #endif
-//#if NETFX_CORE
-//			if (DesignMode.DesignModeEnabled)
-//#endif
+#if NETFX_CORE
+            if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
+#endif
 			{
 				SelectedCar = new CarsRepository().GetAll()[0];
 			}

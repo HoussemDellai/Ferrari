@@ -68,9 +68,9 @@ namespace Ferrari.WPhone8
         // This code will not execute when the application is reactivated
         private async void Application_Launching(object sender, LaunchingEventArgs e)
         {
-            await ServiceLocator.Current.GetInstance<MainPageViewModel>().InitializeDataFromOfflineAsync(); //StartInitializeDataAsync();
+            await ServiceLocator.Current.GetInstance<MainPageViewModel>().StartInitializeDataAsync();//InitializeDataFromOfflineAsync(); //
 
-            await Task.Delay(1000); // necessary to let time to initialize the RootFrame.BackStack.
+            //await Task.Delay(1000); // necessary to let time to initialize the RootFrame.BackStack.
 
             RootFrame.Navigate(new Uri("/Views/MainPage.xaml", UriKind.Relative));
 
